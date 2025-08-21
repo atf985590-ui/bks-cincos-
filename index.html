@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BKS Cincos - أرباح رقمية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS File Link -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- شاشة تسجيل الدخول -->
+    <div id="login-screen" class="screen active">
+        <div class="login-container">
+            <h1 class="app-logo">BKS Cincos</h1>
+            <input type="email" id="login-email" placeholder="البريد الإلكتروني">
+            <input type="password" id="login-password" placeholder="الرقم السري">
+            <input type="text" placeholder="كود الإحالة (اختياري)">
+            <button id="login-btn" class="btn">تسجيل الدخول</button>
+        </div>
+    </div>
+
+    <!-- التطبيق الرئيسي -->
+    <div id="main-app" class="screen">
+        <header>
+            <div class="header-top">
+                <h1 class="app-title">BKS Cincos</h1>
+                <div class="balance-display">الرصيد: <span id="balance-amount">0.00$</span></div>
+            </div>
+            <div class="withdrawal-feed">
+                <span id="feed-item" class="feed-item"></span>
+            </div>
+        </header>
+        <main id="main-content"></main>
+        <footer>
+            <nav id="nav-bar"></nav>
+        </footer>
+    </div>
+    
+    <!-- النافذة المنبثقة (Modal) -->
+    <div id="modal-overlay" class="modal"></div>
+
+    <!-- JavaScript File Link -->
+    <script src="js/app.js"></script>
+</body>
+</html>
