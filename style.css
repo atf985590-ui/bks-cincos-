@@ -1,0 +1,70 @@
+/* css/style.css */
+:root {
+    --bg-dark: #121212;
+    --bg-light: #1E1E1E;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0A0A0;
+    --accent-primary: #E50914; /* Red */
+    --accent-secondary: #FFFFFF; /* White */
+    --card-bg: rgba(30, 30, 30, 0.7);
+    --card-border: rgba(229, 9, 20, 0.3);
+    --shadow-color: rgba(229, 9, 20, 0.4);
+    --gradient-primary: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ripple-effect { to { transform: scale(4); opacity: 0; } }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; font-family: 'Cairo', sans-serif; background-color: var(--bg-dark); color: var(--text-primary); }
+.screen { display: none; height: 100%; width: 100%; }
+.screen.active { display: flex; flex-direction: column; }
+
+/* --- Components --- */
+.btn { position: relative; overflow: hidden; cursor: pointer; border: none; border-radius: 50px; padding: 14px 32px; color: var(--bg-dark); font-size: 16px; font-weight: 700; background: var(--gradient-primary); transition: all 0.3s ease; box-shadow: 0 5px 20px -5px var(--shadow-color); }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px -5px var(--shadow-color); }
+.btn:disabled { background: #555; cursor: not-allowed; box-shadow: none; transform: none; }
+.ripple { position: absolute; border-radius: 50%; background-color: rgba(0, 0, 0, 0.3); transform: scale(0); animation: ripple-effect 0.6s linear; }
+
+.info-card { background: var(--card-bg); padding: 25px; border-radius: 20px; border: 1px solid var(--card-border); backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+h2 { text-align: center; margin-bottom: 20px; color: var(--text-primary); font-weight: 700; }
+.grid-layout { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+/* --- Login Screen --- */
+#login-screen { justify-content: center; align-items: center; padding: 20px; animation: fadeIn 0.5s; }
+.login-container { background: var(--card-bg); padding: 40px; border-radius: 25px; text-align: center; width: 100%; max-width: 450px; backdrop-filter: blur(10px); border: 1px solid var(--card-border); }
+.app-logo { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.login-container input { width: 100%; padding: 15px 20px; margin-bottom: 20px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.3); color: var(--text-primary); text-align: right; font-size: 16px; }
+
+/* --- Main App --- */
+header { padding: 15px 20px; background: rgba(18, 18, 18, 0.8); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid var(--card-border); }
+.header-top { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+.app-title { font-size: 1.5rem; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.balance-display { background: rgba(0, 0, 0, 0.3); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--card-border); }
+.balance-display span { color: var(--accent-primary); font-size: 1.2rem; font-weight: 700; }
+.withdrawal-feed { background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(229, 9, 20, 0.2)); padding: 10px 15px; margin-top: 15px; border-radius: 10px; text-align: center; font-size: 0.9rem; overflow: hidden; height: 32px; display: flex; align-items: center; justify-content: center; }
+.feed-item { opacity: 0; transition: opacity 0.5s; font-weight: 600; }
+.feed-item.visible { opacity: 1; }
+
+main { flex-grow: 1; padding: 20px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--accent-primary) transparent; }
+.page { animation: fadeIn 0.6s ease-out; }
+
+/* --- VIP & Method Items --- */
+.vip-card, .method-item { border: 1px solid var(--card-border); transition: all 0.3s ease; }
+.vip-card:hover, .method-item:hover { transform: translateY(-5px); border-color: var(--accent-primary); }
+.method-item img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--card-border); }
+.method-info h3 { margin: 0 0 5px 0; color: var(--text-primary); }
+.copy-btn { border-radius: 10px; background: var(--accent-primary); color: #000; }
+
+/* --- Modals --- */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 200; }
+.modal-content { background: var(--bg-light); padding: 30px; border-radius: 20px; border: 1px solid var(--card-border); max-width: 500px; width: 90%; animation: fadeIn 0.3s; box-shadow: 0 0 50px var(--shadow-color); }
+.modal-close { position: absolute; top: 15px; left: 15px; background: transparent; border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; }
+
+/* --- Footer Nav --- */
+footer { background: rgba(18, 18, 18, 0.9); backdrop-filter: blur(10px); border-top: 1px solid var(--card-border); padding: 10px 0; z-index: 100; box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2); }
+footer nav { display: flex; justify-content: space-around; }
+.nav-btn { background: transparent; border: none; color: var(--text-secondary); cursor: pointer; transition: all 0.3s; text-align: center; }
+.nav-btn svg { width: 24px; height: 24px; fill: var(--text-secondary); transition: all 0.3s; }
+.nav-btn p { margin: 5px 0 0 0; font-size: 0.7rem; font-weight: 600; }
+.nav-btn.active svg { fill: var(--accent-primary); filter: drop-shadow(0 0 5px var(--accent-primary)); }
+.nav-btn.active p { color: var(--accent-primary); }
